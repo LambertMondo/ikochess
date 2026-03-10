@@ -9,6 +9,7 @@ import { Leaderboard } from './components/Leaderboard';
 import { ChessBoardComponent } from './components/ChessBoardComponent';
 import { ChatAndSpectator } from './components/ChatAndSpectator';
 import { PlayerBadge } from './components/PlayerBadge';
+import { GameActions } from './components/GameActions';
 
 const API_URL = import.meta.env.VITE_SERVER_URL || '';
 
@@ -59,7 +60,12 @@ function App() {
 
     if (!playerData && playerJson) {
       try {
-        playerData = JSON.parse(decodeURIComponent(playerJson));
+        const parsed = JSON.parse(decodeURIComponent(playerJson));
+        if (typeof parsed === 'object' && parsed !== null) {
+          playerData = parsed;
+        } else {
+          playerData = { id: String(parsed) };
+        }
       } catch(e) { 
         playerData = { id: playerJson };
       }
@@ -307,17 +313,6 @@ function App() {
         liveSpectators={liveSpectators}
         showLeaderboard={showLeaderboard}
         setShowLeaderboard={setShowLeaderboard}
-        isPlaying={!isSpectator && status !== 'connecting' && status !== 'waiting' && players.white?.id && players.black?.id}
-        isSpectator={isSpectator}
-        gameStatus={status}
-        isAiGame={isAiGame}
-        isReady={isReady}
-        handleReady={handleReady}
-        socket={socket}
-        gameId={gameId}
-        showEmojiPicker={showEmojiPicker}
-        setShowEmojiPicker={setShowEmojiPicker}
-        handleEmojiSend={handleEmojiSend}
       />
 
       {/* Opponent badge - above the board */}
@@ -368,6 +363,30 @@ function App() {
         fen={game.fen()}
         selectedEmoji={activeEmojis[mySide]}
       />
+      
+      {/* Game actions (Ready, Resign, Draw) at the bottom near the user's badge */}
+      <GameActions 
+        isPlaying={!isSpectator && status !== 'connecting' && status !== 'waiting' && players.white?.id && players.black?.id}
+        isSpectator={isSpectator}
+        gameStatus={status}
+        isAiGame={isAiGame}
+        isReady={isReady}
+        onReady={handleReady}
+        onResign={() => socket && socket.emit('resign', { gameId })}
+        onOfferDraw={() => socket && socket.emit('offer-draw', { gameId })}
+        onAcceptDraw={() => socket && socket.emit('accept-draw', { gameId })}
+        onDeclineDraw={() => socket && socket.emit('decline-draw', { gameId })}
+      />
+      
+      {showEmojiPicker && (
+        <div className="emoji-picker-overlay" onClick={(e) => { e.stopPropagation(); setShowEmojiPicker(false); }}>
+          {['👍', '👎', '🤬', '👏', '😂', '🔥', '🤔', '💀', '😤', '😎'].map(emoji => (
+            <button key={emoji} className="emoji-btn" onClick={() => handleEmojiSend(emoji)}>
+              {emoji}
+            </button>
+          ))}
+        </div>
+      )}
 
       <Leaderboard isOpen={showLeaderboard} onClose={() => setShowLeaderboard(false)} />
 
