@@ -40,6 +40,7 @@ function App() {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [activeEmojis, setActiveEmojis] = useState({ white: null, black: null });
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [hasGameId, setHasGameId] = useState(false);
 
   // Sync Timer Reference
   const syncTimerRef = useRef(null);
@@ -60,9 +61,11 @@ function App() {
     }
 
     if (!gid) {
-      alert("Lien invalide. Aucun ID de partie spécifié.");
+      setHasGameId(false);
       return;
     }
+
+    setHasGameId(true);
 
     setGameId(gid);
 
@@ -274,6 +277,24 @@ function App() {
   const oppColor = myColor ? getOpponentColor() : 'white';
   const mySide = myColor || 'black';
 
+  // ─── LANDING PAGE (no game params) ───
+  if (!hasGameId) {
+    return (
+      <div className="app-container landing">
+        <div className="top-bar">
+          <h1 className="app-title">♟️ IkoChess</h1>
+        </div>
+        <div className="landing-hero">
+          <div className="landing-icon">♛</div>
+          <h2>Bienvenue sur IkoChess</h2>
+          <p>Pour commencer une partie, utilisez la commande <code>/chess</code> dans un groupe Telegram avec le bot <strong>OpenClaw</strong>.</p>
+        </div>
+        <Leaderboard isOpen={true} onClose={() => {}} embedded={true} />
+      </div>
+    );
+  }
+
+  // ─── GAME VIEW ───
   return (
     <div className="app-container" onClick={() => setShowEmojiPicker(false)}>
       

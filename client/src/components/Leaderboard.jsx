@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-export const Leaderboard = ({ isOpen, onClose }) => {
+export const Leaderboard = ({ isOpen, onClose, embedded = false }) => {
   const [rankings, setRankings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen || embedded) {
       setLoading(true);
       fetch('/api/rankings')
         .then(r => r.json())
@@ -18,52 +18,59 @@ export const Leaderboard = ({ isOpen, onClose }) => {
           setLoading(false);
         });
     }
-  }, [isOpen]);
+  }, [isOpen, embedded]);
 
-  if (!isOpen) return null;
+  if (!isOpen && !embedded) return null;
+
+  const content = (
+    <div className={`leaderboard-panel ${embedded ? 'embedded' : ''}`}>
+      {!embedded && (
+        <button className="lb-close-btn" onClick={onClose} aria-label="Fermer">✕</button>
+      )}
+      <div className="lb-header">
+        <span className="lb-trophy">🏆</span>
+        <h2>Classement des Joueurs</h2>
+      </div>
+
+      {loading ? (
+        <div className="lb-loading">
+          <div className="lb-spinner"></div>
+          <span>Chargement...</span>
+        </div>
+      ) : rankings.length === 0 ? (
+        <div className="lb-empty">Aucun joueur classé pour le moment.</div>
+      ) : (
+        <div className="lb-list">
+          {rankings.map((player, index) => (
+            <div key={player.telegram_id} className={`lb-row ${index < 3 ? 'lb-top-' + (index + 1) : ''}`}>
+              <div className="lb-rank">
+                {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : <span className="lb-rank-num">#{index + 1}</span>}
+              </div>
+              <div className="lb-player-info">
+                <div className="lb-player-name">{player.username || 'Anonyme'}</div>
+                <div className="lb-player-stats">
+                  <span className="lb-elo">ELO {Math.round(player.elo)}</span>
+                  <span className="lb-record">
+                    <span className="lb-win">{player.games_won}V</span>
+                    <span className="lb-loss">{player.games_lost}D</span>
+                    <span className="lb-draw">{player.games_drawn}N</span>
+                  </span>
+                </div>
+              </div>
+              <div className="lb-score">{player.score}<small> pts</small></div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+
+  if (embedded) return content;
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content leaderboard" onClick={e => e.stopPropagation()}>
-        <button className="close-btn" onClick={onClose}>×</button>
-        <h2>🏆 Classement des Joueurs</h2>
-        
-        {loading ? (
-          <div className="loading">Chargement des scores...</div>
-        ) : rankings.length === 0 ? (
-          <div className="empty-state">Aucun joueur classé pour le moment.</div>
-        ) : (
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Rang</th>
-                  <th>Joueur</th>
-                  <th>Points</th>
-                  <th>ELO</th>
-                  <th>V / D / N</th>
-                </tr>
-              </thead>
-              <tbody>
-                {rankings.map((player, index) => (
-                  <tr key={player.telegram_id} className={index < 3 ? `top-${index + 1}` : ''}>
-                    <td className="rank">
-                      {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `#${index + 1}`}
-                    </td>
-                    <td className="name">{player.username || 'Anonyme'}</td>
-                    <td className="score">{player.score} pts</td>
-                    <td className="elo">{Math.round(player.elo)}</td>
-                    <td className="stats">
-                      <span className="win">{player.games_won}</span> / 
-                      <span className="loss">{player.games_lost}</span> / 
-                      <span className="draw">{player.games_drawn}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+      <div onClick={e => e.stopPropagation()}>
+        {content}
       </div>
     </div>
   );
