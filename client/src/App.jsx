@@ -29,8 +29,13 @@ function App() {
   // Game Status
   // 'connecting', 'waiting', 'your-turn', 'opponent-turn', 'finished'
   const [status, setStatus] = useState('connecting');
-  const [isReady, setIsReady] = useState(false);
+  const [playersReady, setPlayersReady] = useState({ white: false, black: false });
   const [liveSpectators, setLiveSpectators] = useState(0);
+
+  const isReady = myColor ? playersReady[myColor] : false;
+  const oppColorForReady = myColor === 'white' ? 'black' : (myColor === 'black' ? 'white' : null);
+  const isOpponentReady = oppColorForReady ? playersReady[oppColorForReady] : false;
+  const isGameFullyReady = (playersReady.white && playersReady.black) || isSpectator;
   
   // Timers
   const [timers, setTimers] = useState({ white: 300000, black: 300000 });
@@ -152,8 +157,7 @@ function App() {
       }
       
       // Look for individual readiness
-      const readyState = color ? data.ready[color] : false;
-      setIsReady(readyState || false);
+      setPlayersReady(data.ready || { white: false, black: false });
 
       setIsAiGame(data.isAiGame);
       setTimers({
@@ -173,10 +177,7 @@ function App() {
 
     // Ready State Sync Let everyone know
     newSocket.on('player-ready-update', (data) => {
-      setMyColor(currentColor => {
-        if (currentColor === data.color) setIsReady(data.ready);
-        return currentColor;
-      });
+      setPlayersReady(prev => ({ ...prev, [data.color]: data.ready }));
     });
 
     // Timer Sync
@@ -263,7 +264,7 @@ function App() {
       
       setGame(gameCopy);
       setStatus('opponent-turn');
-      socket.emit('move', { gameId, move: move.san });
+      socket.emit('make-move', { gameId, move: move.san });
       return true;
     } catch (e) {
       return false;
@@ -278,7 +279,7 @@ function App() {
 
   const handleReady = () => {
     socket.emit('player-ready', { gameId });
-    setIsReady(true);
+    if (myColor) setPlayersReady(prev => ({ ...prev, [myColor]: true }));
   };
 
   const getOpponentColor = () => myColor === 'white' ? 'black' : 'white';
@@ -337,6 +338,7 @@ function App() {
           isDraggablePiece={({ piece }) => {
             if (!piece) return false;
             if (isSpectator) return false;
+            if (!isGameFullyReady) return false;
             if (myColor && piece.charAt(0) !== myColor.charAt(0)) return false;
             if (status !== 'your-turn') return false;
             return true;
@@ -344,10 +346,20 @@ function App() {
         />
         
         {status === 'connecting' && <div className="status-text">Connexion au serveur...</div>}
-        {status === 'waiting' && <div className="status-text">En attente de l'adversaire...</div>}
-        {!isReady && status === 'opponent-turn' && <div className="status-text">L'adversaire n'est pas prêt.</div>}
-        {!isReady && status === 'your-turn' && <div className="status-text">Veuillez indiquer que vous êtes prêt.</div>}
-        {isReady && status === 'your-turn' && <div className="status-text" style={{color: '#43a047'}}>C'est à vous de jouer !</div>}
+        {status === 'waiting' && <div className="status-text">En attente des joueurs...</div>}
+        
+        {!isSpectator && status !== 'connecting' && status !== 'waiting' && (
+          <>
+            {!isReady && <div className="status-text">Veuillez indiquer que vous êtes prêt.</div>}
+            {isReady && !isOpponentReady && <div className="status-text">L'adversaire n'est pas prêt.</div>}
+            {isGameFullyReady && status === 'your-turn' && <div className="status-text" style={{color: '#43a047'}}>C'est à vous de jouer !</div>}
+            {isGameFullyReady && status === 'opponent-turn' && <div className="status-text">Tour de l'adversaire...</div>}
+          </>
+        )}
+        
+        {isSpectator && status !== 'connecting' && status !== 'waiting' && (
+          <div className="status-text">Mode Spectateur</div>
+        )}
       </div>
 
       {/* My badge - below the board */}
