@@ -335,6 +335,7 @@ function App() {
           boardOrientation={myColor || 'white'}
           onPieceDrop={onPieceDrop}
           isDraggablePiece={({ piece }) => {
+            if (!piece) return false;
             if (isSpectator) return false;
             if (myColor && piece.charAt(0) !== myColor.charAt(0)) return false;
             if (status !== 'your-turn') return false;
