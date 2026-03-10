@@ -128,7 +128,9 @@ h1.app-title {
   padding: 10px 15px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
-  margin: 5px 10px;
+  margin: 5px auto;
+  width: calc(100% - 20px);
+  max-width: 500px;
   gap: 10px;
   position: relative;
   transition: all 0.3s ease;

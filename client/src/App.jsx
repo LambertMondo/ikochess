@@ -132,8 +132,8 @@ function App() {
       
       let color = null;
       if (playerData && !isWatchMode) {
-        if (data.white === playerData.id) color = 'white';
-        else if (data.black === playerData.id) color = 'black';
+        if (String(data.white) === String(playerData.id)) color = 'white';
+        else if (String(data.black) === String(playerData.id)) color = 'black';
         else setIsSpectator(true);
         setMyColor(color);
       } else {

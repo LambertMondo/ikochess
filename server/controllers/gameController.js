@@ -92,7 +92,7 @@ export const registerGameHandlers = (io, socket, games, players) => {
       timerInterval: null,
       drawOffer: null,
       finished: false,
-      ready: { white: false, black: isAiGame }
+      ready: { white: isAiGame, black: isAiGame }
     }
     
     games.set(gameId, gameData)
@@ -114,6 +114,14 @@ export const registerGameHandlers = (io, socket, games, players) => {
       timers: gameData.timers,
       ready: gameData.ready
     })
+
+    if (isAiGame) {
+      startTimer(gameId, games, io)
+      io.to(gameId).emit('game-ready-to-play')
+      if (gameData.game.turn() === 'b' && gameData.black === AI_PLAYER_ID) {
+         scheduleAiMove(gameId, gameData, games, io)
+      }
+    }
   })
 
   socket.on('player-ready', ({ gameId }) => {
