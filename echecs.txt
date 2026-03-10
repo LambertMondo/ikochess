@@ -1,0 +1,1761 @@
+Cours de jeu d'échecs
+Théorie et exercices
+
+BIELIK Frédéric
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+Remerciements.
+Ce document a été réalisé sous l'impulsion de Hainaut
+Culture Tourisme (secteur éducation permanente), de
+la commune d'Estinnes, de la Fédération Échiquéenne
+Francophone de Belgique et de a1-h8 asbl ; avec le
+soutien du Plan de Cohésion Sociale
+Je remercie tout particulièrement Aurore Gillet,
+Frédéric Belva et Raymond Van Melsen pour leurs
+conseils avisés.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+0
+
+« La guerre n’aura pas lieu… »
+Auteur : Perez Ange
+
+Il était une fois, un roi tout vieux et très sage qui vivait dans un pays
+très bizarre. Ce pays n’était pas comme le nôtre car tout y était blanc.
+Le roi qui donc était tout blanc, habitait dans un immense château tout
+blanc. Ce château tout blanc était flanqué de deux solides tours toute
+blanches. Juste à côté de ces deux tours toute blanches, se trouvaient
+les écuries qui abritaient des chevaux tout blancs montés par des
+cavaliers tout blancs. Et juste à côté des écuries qui abritaient des
+chevaux tout blancs vivaient de drôles de personnages tout blancs qui
+avaient un comportement très bizarre : le roi les appelait ses fous.
+Enfin, au milieu du château tout blanc, se trouvaient les appartements
+du roi tout blanc et ceux de la reine toute blanche. Des soldats tout
+blancs étaient installés devant le château tout blanc. Ils étaient là pour
+protéger le château tout blanc et le roi tout blanc.
+La vie, dans ce pays tout blanc, était très agréable et très paisible. Tout
+le monde vivait depuis toujours dans le bonheur et personne n’avait
+jamais eu d’ennemis.
+Mais un jour, les cavaliers du roi tout blancs revinrent au château très
+inquiets pour annoncer au roi une bien étrange nouvelle :
+– Sire roi dit le premier cavalier avec émotion, nous venons de
+découvrir à l’autre bout du royaume tout blanc une chose
+absolument in-cro-ya-ble !
+– Comment cela ? s’étonna le roi tout blanc.
+– Oh ! Sire, reprit le deuxième cavalier d’une voix tremblante, la
+chose est tellement, tellement…, tellement étonnante !
+– Mais enfin ! s’emporta le roi qui d’habitude ne criait jamais, allezvous enfin me dire ce que vous avez vu ?
+– Eh bien ! reprirent ensemble les deux cavaliers tout blancs, nous
+avons vu, à l’autre bout du royaume, un château, oui.. oui.. un
+château pareil au nôtre, mais… mais…il est tout noir !
+– Tout noir ! s’exclama le roi tout blanc, mais c’est impossible, je le
+saurais tout de même… !
+Au moment même où le roi tout blanc prononçait ces paroles, les deux
+fous tout blancs, qui habituellement faisaient rire le roi, entrèrent
+complètement affolés pour lui annoncer qu’un roi tout noir voulait lui
+parler de toute urgence :
+– Sire, gronda le roi tout noir d’une voix terrible, votre royaume tout
+blanc me plaît et je veux l’habiter. Le roi tout noir ajouta
+menaçant, dès demain, nous ferons la guerre ! …et nous verrons
+bien laquelle de nos deux armées sera la plus forte !
+Sur ces paroles, le roi tout noir repartit fièrement en laissant le roi tout
+blanc très désappointé.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+1
+
+Le roi tout blanc n’avait jamais combattu, et son armée n’avait jamais
+fait la guerre. Mais le roi tout blanc savait dans sa grande sagesse que
+la guerre était une chose terrible, qu’elle provoquait beaucoup de
+dégâts et surtout, qu’elle tuait beaucoup de gens et n’apportait que
+larmes et souffrances. Ne sachant que faire, il décida d’aller voir son
+amie, la fée Caïssa, pour lui exposer son problème.
+– Roi tout blanc, lui dit la fée avec beaucoup de douceur, j’attendais
+ta visite. Je savais que tu allais venir car moi, la fée, je sais
+toujours tout avant les autres. Je connais déjà ton problème et
+voilà ce que je te propose.
+La fée expliqua longuement au roi tout blanc ce qu’il fallait faire.
+Quand elle fut sûre que le vieux roi tout blanc avait bien compris, elle
+le laissa repartir.
+Et c’est ainsi que le lendemain matin, le roi tout blanc partit jusqu’à
+l’autre bout du royaume pour visiter le roi tout noir.
+– Roi tout noir, dit le roi tout blanc d’une voix ferme et décidée, je
+déteste la guerre et je refuse de faire combattre mon armée contre
+la tienne, mais, je ne refuse pas le combat.
+– A ces mots, le roi tout noir éclata d’un méchant rire : Ah ! Ah !
+Ah ! Mais comment pourrais-tu combattre sans ton armée ?
+– Écoute-moi bien roi tout noir, voici ce que je te propose : nous
+allons nous battre dans un jeu. Notre champ de bataille sera un
+quadrillage qui comportera autant de cases noires que de cases
+blanches. Nous l’appellerons l’échiquier. D’un côté de l’échiquier,
+des pièces en bois noir représenteront tes soldats et ton château
+avec tes tours, tes cavaliers, tes fous, ta femme la reine noire et
+toi-même. De l’autre côté de l’échiquier, des pièces en bois blanc
+représenteront mes soldats et mon château avec mes tours, mes
+cavaliers, mes fous, ma femme, la reine blanche, et moi-même.
+Puisque j’étais dans le royaume avant toi, je jouerai le premier.
+Nous ferons plusieurs parties et le gagnant sera le gagnant de la
+guerre.
+Le roi noir accepta de jouer. Les deux rois inventèrent les règles du jeu
+qu’ils appelèrent jeu d’échecs.
+Et qui a gagné la guerre me direz-vous ?
+Eh bien tous les deux en réalité car tantôt c’était les noirs qui gagnaient
+et tantôt c’était les blancs. Mais ce qui est sûr, c’est que grâce à la fée
+Caïssa, les blancs et les noirs ont appris à vivre ensemble et qu’il n’y
+eut jamais la guerre dans le royaume.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+2
+
+Jouer aux échecs
+
+Nature et objectifs du jeu d’échecs
+
+1. Le jeu d’échecs se joue entre deux partenaires qui déplacent alternativement des pièces sur un
+plateau carré appelé "échiquier". Le joueur ayant les pièces claires (blanches) commence la
+partie.
+On dit qu’un joueur "a le trait" lorsque le coup de son partenaire a été "joué".
+2. L’objectif de chaque joueur est de placer le roi adverse "sous une attaque"de telle manière que
+l’adversaire n’ait aucun coup légal. On dit que le joueur qui atteint ce but a "maté" le roi
+adverse et gagné la partie.
+Laisser son roi sous une attaque, exposer son roi à une attaque et aussi "prendre" le roi adverse
+n'est pas autorisé. L’adversaire dont le roi a été maté a perdu la partie.
+3. Si la position est telle qu’aucun des deux joueurs n’a la possibilité de mater, la partie est nulle.
+
+Le gain
+
+1. La partie est gagnée par le joueur qui a maté le roi adverse.
+2. La partie est gagnée par le joueur dont l’adversaire déclare qu’il abandonne.
+3. La partie est gagnée quand le temps imparti à son adversaire est écoulé.
+
+La nullité
+
+1. La partie est nulle lorsque le joueur ayant le trait n’a aucun coup légal et que son roi n’est pas
+en échec. On dit alors que la partie se termine par un "pat"
+2. La partie est nulle quand une position est telle qu’aucun joueur ne peut mater le roi adverse. On
+dit que la partie se termine "position morte".
+3. La partie est nulle si les deux joueurs le décident d’un commun accord pendant la partie.
+4. La partie peut être nulle si une position identique est sur le point de survenir ou vient de
+survenir au moins trois fois sur l’échiquier.
+5. La partie peut être nulle si chaque joueur a joué au moins les 50 derniers coups consécutifs sans
+aucun mouvement de pion ni aucune prise.
+
+Le matériel :
+
+2 partenaires + 1 échiquier + 16 pièces claires + 16 pièces foncées
+(Facultatif : 1 pendule + 1 crayon + 1 feuille de partie)
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+3
+
+L'échiquier
+L'échiquier est constitué
+de 8x8 cases, 32 de couleur claire, 32 de couleur
+foncée. Aux échecs, on les appelle les cases
+blanches et noires.
+Pour placer l'échiquier correctement devant soi, il
+faut veiller à ce que la case du coin droit en bas
+soit une case claire (blanche).
+
+Toutes les cases ont un nom.
+Pour retrouver le nom d'une case, il faut d'abord
+regarder en bas, puis à gauche
+
+Les cases a8, b7, c6, d5, e4, f3, g2, h1 se trouvent
+sur une diagonale. Les cases d'une diagonale ont
+toutes la même couleur. Les diagonales n'ont pas
+toutes la même longueur. La plus courte compte 2
+cases. La plus longue en compte 8.
+
+Les rangées (ou traverses) sont les lignes qui
+parcourent l'échiquier horizontalement. Elles sont
+indiquées par des chiffres. Toutes les cases dont le
+nom contient le 2 (a2, b2, c2, d2, e2, f2, g2, h2) se
+trouvent sur la deuxième rangée.
+Les colonnes traversent l'échiquier verticalement
+et elles sont indiquées par des lettres. Toutes les
+cases avec un h (h1, h2, h3, h4, h5, h6, h7, h8) se
+trouvent sur la colonne h.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+4
+
+L'échiquier, suite
+
+L'échiquier est divisé en deux parties égales de
+manière horizontale.
+Les rangées 1, 2, 3 et 4 constituent le camp des
+Blancs.
+Les rangées 8, 7, 6 et 5 constituent le camp des
+Noirs
+
+L'échiquier est divisé en deux parties égales de
+manière verticale.
+Les colonnes a, b, c et d constituent l'aile Dame.
+Les colonnes e, f, g et h constituent l'aile Roi.
+
+Les 4 cases e5, e4, d4 et d5 constituent le centre
+de l'échiquier.
+
+Les cases c3, c4, c5, c6, d3, d4, d5, d6, e3, e4, e5,
+e6, f3, f4, f5 et f6 constituent le grand centre.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+5
+
+L'échiquier, suite et fin
+
+Les colonnes a et h + les rangées 1 et 8
+constituent les bords ou bandes de l'échiquier.
+
+Les 4 cases a1, a8, h8 et h1 sont les 4 coins de
+l'échiquier
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+6
+
+Nom :
+
+L'échiquier
+
+Prénom :
+Classe :
+
+/10
+
+Date :
+1. Lequel de ces diagrammes représente un échiquier ?
+
+/2
+
+2. Lequel de ces échiquiers est bien positionné ?
+
+/2
+
+3. Diagramme 1 – Colorie en jaune les colonnes b et g et en rouge, les cases d4 et h3.
+Diagramme 2 – Colorie en vert les rangées 2 et 7 et en rouge les cases b6 et f3.
+Diagramme 3 – Colorie en bleu la diagonale a1-h8 et en rouge les cases b7 et g2.
+
+1
+
+2
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+/2
+/2
+/2
+
+3
+7
+
+Nom :
+
+L'échiquier, suite
+
+Prénom :
+Classe :
+
+/10
+
+Date :
+1. Diagramme 1 – Colorie en jaune l'aile Dame.
+Diagramme 2 – Colorie en vert le camp des Noirs
+Diagramme 3 – Colorie en bleu le centre
+
+/2
+/2
+/2
+
+2
+
+3
+
+1
+
+2. Effet miroir.
+/4
+Des pastilles de couleurs se trouvent sur l'échiquier, face à un miroir représenté par la ligne verte.
+Représente le reflet de ces pastilles sur l'autre moitié de l'échiquier.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+8
+
+Le Roi (R), la pièce la plus importante.
+Valeur : 1000 points – Quantité : 1
+
+Remarques :
+
+Le roi peut jouer vers toutes les
+cases indiquées par ☺. Il y en a 8.
+Le roi marche en ligne droite ou en
+diagonale, mais une seule case à la
+fois. A partir de f3, le roi dispose
+de 8 coups différents.
+Le Roi peut prendre toutes les
+pièces adverses, sauf le Roi. Il
+prend alors la pièce qui se trouve
+sur la case qu'il veut occuper.
+
+Quand on attaque le Roi de son adversaire, il est courtois de l'en avertir. On dit : « Échec ! ». Le
+partenaire doit alors parer cet échec.
+Le Roi ne peut se mettre volontairement en prise. De cette règle découle le principe d'opposition.
+Le principe d'opposition :
+Comme le Roi ne peut pas se mettre en prise, il ne
+peut pas se placer à côté du Roi adverse, sinon, il
+sera pris.
+Un peu comme 2 aimants qui se repoussent, les Rois
+doivent toujours garder au moins une case d'écart
+entre eux.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+9
+
+Nom :
+Prénom :
+Classe :
+Date :
+1. Coche en bleu les cases accessibles au Roi Blanc.
+Coche en vert les cases accessibles au Roi Noir.
+
+Le Roi - R
+/20
+/10
+
+2. Le Roi Blanc doit se rendre le plus vite possible sur la case f8 .
+/10
+La ligne droite semble le chemin le plus court. Il compte 4 cases.
+Est-ce le seul ? Non. Propose 2 autres chemins de 4 cases au Roi Blanc pour atteindre f8.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+10
+
+Nom :
+
+Le Roi – R, suite
+
+Prénom :
+Classe :
+
+/20
+
+Date :
+1. Écris la définition du principe d'opposition entre les 2 Rois
+
+/2
+
+2. Qui va capturer la pastille ? Les Blancs (B) ou les Noirs (N) ?
+
+/18
+
+Personne
+
+Personne
+
+B
+
+B
+
+N
+
+N
+
+Personne
+
+Personne
+
+B
+
+B
+
+N
+
+N
+
+Personne
+
+Personne
+
+B
+
+B
+
+N
+
+N
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+11
+
+La Tour, comme sur des rails.
+Valeur : 5 points – Quantité : 2
+
+La Tour peut jouer vers toutes les
+cases indiquées par ☺.
+Il y en a 14.
+La Tour se déplace sur les rangées
+(de gauche à droite) et
+sur les colonnes (de haut en bas).
+Elle dispose de 14 coups
+différents.
+La Tour peut prendre toutes les
+pièces. Elle prend cette pièce et se
+place sur sa case.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+12
+
+Nom :
+Prénom :
+Classe :
+Date :
+
+La Tour – T
+/20
+
+1. Indique d'une croix toutes les cases que peut atteindre la Tour Blanche située en c3 en 1 coup.
+
+/6
+
+2. Indique d'une croix toutes les cases que peut atteindre la Tour Noire située en g8, en 1 coup.
+
+/6
+
+3. La Tour Blanche qui est sur la case a1 doit se rendre sur la case marquée de la pastille rouge.
+Trace le plus court chemin. Inspire-toi du modèle.
+
+/8
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+13
+
+Nom :
+
+La Tour – T, suite
+
+Prénom :
+Classe :
+
+/12
+
+Date :
+
+1. Voici 3 situations où les Blancs et les Noirs convoitent les pastilles vertes.
+En 1 seul coup, combien de pastilles peuvent prendre Roi et tour de chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+R
+
+Blancs
+
+Noirs
+
+T
+
+R
+
+Blancs
+
+Noirs
+
+T
+
+R
+
+Blancs
+
+/6
+
+Noirs
+
+T
+
+2. Voici 3 autres situations où les Blancs et les Noirs convoitent toujours les pastilles vertes.
+En 1 seul coup, combien de pastilles peut prendre chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+Blancs
+
+Noirs
+
+Blancs
+
+Noirs
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+Blancs
+
+/6
+
+Noirs
+
+14
+
+Nom :
+Prénom :
+Classe :
+Date :
+
+La Tour – T, suite
+/18
+
+1. Attaque du Roi.
+Trace à l'aide d'une flèche un coup pour attaquer le Roi.
+
+/6
+
+2. Défense du Roi.
+Trace à l'aide d'une flèche un coup pour défendre la Roi.
+
+/6
+
+3. Prise de pièce.
+Trace à l'aide d'une flèche le meilleur coup pour prendre une pièce.
+
+/6
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+15
+
+Échec (+) !
+
+Fair-play et esprit chevaleresque
+
+Quand le Roi est attaqué, le Roi est en « échec ».
+Le joueur qui attaque ce Roi prévient son partenaire en disant : « Échec ! »
+Voici une position.
+Le carré blanc en haut à
+droite de l'échiquier
+indique que c'est aux
+Blancs à jouer.
+Les Blancs ne jouent pas
+un bon coup.
+Ils veulent absolument
+attaquer le Roi noir.
+Ils jouent leur Tour qui se
+trouve sur la case h8 en la
+posant sur la case d8.
+Échecs !
+
+Voici la position après le coup des Blancs.
+Le carré noir en haut à droite de l'échiquier indique que c'est aux
+Noirs à jouer.
+Leur Roi est attaqué. Il est en échec. Les Noirs doivent absolument
+parer cette attaque, cet échec.
+Les Noirs disposent de 3 démarches :
+1. Ils déplacent le Roi.
+2. Ils prennent la pièce qui attaque le Roi.
+3. Ils interposent une pièce entre le Roi et la pièce qui attaque le Roi.
+1. Les Noirs déplacent le Roi.
+
+2. Les Noirs prennent la pièce menaçante.
+
+3. Les Noirs interposent une pièce.
+
+NB : Les Noirs ont plusieurs coups possibles. Ils choisiront le meilleur. Dans cette situation, c'est la 2e démarche qui va
+entraîner le meilleur coup. Ils vont prendre une Tour aux Blancs et poursuivre la partie avec une Tour d'avance.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+16
+
+Échec et mat (#) !
+
+Fair-play et esprit chevaleresque
+Quand le Roi est attaqué et qu'il lui est impossible de parer cette attaque,
+le Roi est « Échec et mat ! »
+La partie est terminée. La victoire revient à celui qui a maté le Roi adverse.
+
+C'est aux Blancs à jouer.
+Ils déplacent la Tour de d8
+à d1 : « Échec ! »
+
+C'est au tour des Noirs.
+Ils doivent parer l'échec.
+1. En déplaçant le Roi, les Noirs
+ne parviennent pas à éviter les
+attaques des 2 Tours Blanches.
+2. Ni les Tours, ni le Roi Noirs
+ne peuvent prendre la pièce qui
+attaque le Roi (la Tour Blanche
+située en d1).
+3. Aucune des 2 Tours Noires ne
+peut s'interposer entre la Tour
+Blanche en d1 et le Roi Noir.
+
+Les Noirs sont « échec et mat » ou tout simplement « mat » !
+Les Blancs ont gagné.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+17
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 1
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la Tour qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+18
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 2
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la Tour qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+19
+
+Le Fou (F), il est fêlé.
+Valeur : 3 points – Quantité : 2
+
+Le Fou peut jouer vers toutes les
+cases indiquées par ☺.
+Il y en a 13.
+Le Fou se déplace sur les
+diagonales. Il contrôle des cases
+de même couleur.
+Selon sa position, il a une quantité
+de déplacements variant de 13 à 7
+coups possibles.
+Le Fou peut prendre toutes les
+pièces. Il prend cette pièce et se
+place sur sa case.
+Le Fou est la seule pièce qui se déplace toujours sur des cases de même couleur.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+20
+
+Nom :
+Prénom :
+Classe :
+
+Le Fou - F
+
+Date :
+
+/20
+
+1. Indique d'une croix les différentes cases que le Fou peut atteindre en 1 coup.
+
+/12
+
+3. Le Fou Blanc qui est sur la case e1 doit se rendre sur la case marquée de la pastille rouge.
+Trace le plus court chemin. Inspire-toi du modèle.
+
+/8
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+21
+
+Nom :
+
+Le Fou – F, suite
+
+Prénom :
+Classe :
+
+/12
+
+Date :
+
+1. Voici 3 situations où les Blancs et les Noirs convoitent les pastilles vertes.
+En 1 seul coup, combien de pastilles peuvent prendre Roi, Tour et Fou de chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+R
+
+Blancs
+
+Noirs
+
+T
+
+R
+
+Blancs
+
+Noirs
+
+Noirs
+
+T
+
+T
+
+F
+
+R
+
+Blancs
+
+/6
+
+F
+
+F
+
+2. Voici 3 autres situations où les Blancs et les Noirs convoitent toujours les pastilles vertes.
+En 1 seul coup, combien de pastilles peut prendre chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+Blancs
+
+Noirs
+
+Blancs
+
+Noirs
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+Blancs
+
+/6
+
+Noirs
+
+22
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 3
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement du Fou qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+23
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 4
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la pièce qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+24
+
+La Dame (D), la plus puissante.
+Valeur : 10 points – Quantité : 1
+
+La Dame peut jouer vers toutes les
+cases indiquées par ☺.
+Il y en a 27.
+La Dame se déplace sur les
+rangées et sur les colonnes
+(comme la Tour) et sur les
+diagonales (comme le Fou).
+Selon sa position, elle a une
+quantité de déplacements variant
+de 27 à 21 coups possibles.
+La Dame peut prendre toutes les
+pièces. Elle prend cette pièce et se
+place sur sa case.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+25
+
+Nom :
+Prénom :
+Classe :
+Date :
+
+La Dame - D
+/20
+
+1. Indique d'une croix toutes les cases que peut atteindre la Dame Blanche en 1 coup.
+
+/6
+
+2. Indique d'une croix toutes les cases que peut atteindre la Dame Noire en 1 coup.
+
+/6
+
+3. La Dame Blanche qui est sur la case d1 doit se rendre sur la case marquée de la pastille rouge.
+Trace le plus court chemin. Inspire-toi du modèle.
+
+/8
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+26
+
+Nom :
+
+La Dame – D, suite
+
+Prénom :
+Classe :
+
+/12
+
+Date :
+
+1. Voici 3 situations où les Blancs et les Noirs convoitent les pastilles vertes.
+/6
+En 1 seul coup, combien de pastilles peuvent prendre Roi, Tour, Fou et Dame de chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+R
+
+Blancs
+
+Noirs
+
+T
+
+R
+
+Blancs
+
+Noirs
+
+T
+
+F
+
+Noirs
+
+T
+
+F
+
+D
+
+R
+
+Blancs
+
+F
+
+D
+
+D
+
+2. Voici 3 autres situations où les Blancs et les Noirs convoitent toujours les pastilles vertes.
+En 1 seul coup, combien de pastilles peut prendre chaque camp ?
+Attention, aucune pièce ne peut se faire prendre !
+
+Blancs
+
+Noirs
+
+Blancs
+
+Noirs
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+Blancs
+
+/6
+
+Noirs
+
+27
+
+La Dame (D)... et le baiser de la mort.
+Nous savons que la Dame peut combiner les déplacements de
+la Tour et du Fou. C'est ce qui la rend très puissante.
+Mais seule elle reste trop faible pour mater le Roi adverse.
+Quand soutenue par une autre pièce, elle parvient à
+s'approcher du Roi adverse comme si elle voulait l'embrasser
+discrètement : c'est le baiser de la mort ! Le Roi est mat.
+La Tour contrôle toute la rangée 7,
+et notamment la case g7.
+La Dame contrôle toute la diagonale a1-h8
+et notamment la case g7.
+Le Roi Noir est en g8.
+Les Blancs vont déplacer
+leur Dame sur la case g7
+
+Les Noirs ne peuvent pas éviter l'échec :
+1. Impossible d'interposer une pièce entre la Dame et
+le Roi. Il n'y en a pas et en plus il n'y pas de place.
+2. Le Roi ne peut pas prendre la Dame car elle est
+protégée par le Tour.
+3. Le Roi n'a pas de case de fuite.
+Les Noirs sont mat !
+
+Exemples de baisers de la mort...
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+28
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 5
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la Dame qui mate le Roi adverse.
+… le baiser de la mort !
+
+… comme la Tour !
+
+… comme le Fou !
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+29
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 6
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la pièce qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+30
+
+Le Cavalier (C), il saute partout.
+Valeur : 3 points – Quantité : 2
+
+Le Cavalier peut jouer vers toutes
+les cases indiquées par ☺.
+Il y en a 8.
+Le Cavalier se déplace d'une case
+en diagonale et puis d'une case en
+ligne droite.
+Il atterrit sur une case de couleur
+différente de celle de sa case de
+départ.
+Selon sa position, il a une quantité
+de déplacements variant de 8 à 2
+coups possibles.
+Le Cavalier peut prendre toutes
+les pièces. Il prend cette pièce et
+se place sur sa case.
+Le Cavalier change de couleur de case à chaque coup.
+Le Cavalier est la seule pièce qui peut sauter au-dessus des autres.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+31
+
+Nom :
+Prénom :
+Classe :
+Date :
+
+Le Cavalier - C
+/20
+
+1. Indique d'une croix toutes les cases que peut atteindre le Cavalier.
+
+/12
+
+2. Le Cavalier doit se rendre sur la case marquée de la pastille rouge.
+Trace le plus court chemin. Inspire-toi du modèle.
+
+/8
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+32
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 7
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement du Cavalier qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+33
+
+Le pion, petit mais costaud.
+Valeur : 1 point – Quantité: 8
+
+Le pion avance d'une seule case à
+la fois. Il occupe celle qui est juste
+devant lui, sur la même colonne.
+Si le pion est sur sa case de départ,
+il peut avancer de 2 cases.
+Les pions Blancs avancent de la
+rangée 2 vers la rangée 8. Les
+pions Noirs avancent de la rangée
+7 vers la rangée 1.
+
+Le pion est la seule pièce qui ne peut pas reculer.
+Le pion est la seule pièce qui ne prend pas dans le sens de son déplacement.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+34
+
+Le pion, il prend en diagonale.
+Le pion prend les pièces ennemies qui se
+trouvent sur une des cases diagonales
+devant et contiguës à la sienne.
+Le pion est la seule pièce qui ne prend
+pas dans le sens de son déplacement.
+
+Le pion, il peut prendre « en passant » (e.p.).
+
+Cette façon de prendre ne s'applique qu'entre pions. Dans cet
+exemple, c'est le pion blanc qui prend « en passant ».
+1. Le pion Noir avance de 2 cases.
+2. Le pion Noir arrive sur la même rangée que le pion Blanc.
+3. Les 2 pions sont sur des cases adjacentes.
+4. Le pion Blanc prend comme si le pion Noir n'avait avancé que
+d'une seule case.
+5. Cette prise doit se réaliser au coup suivant le déplacement du
+pion Noir.
+C'est la seule prise aux échecs où l'attaquant se retrouve sur une
+case qui était vide juste avant la prise.
+
+Le pion, il prend du galon : la promotion.
+Lorsqu'un pion atteint la dernière rangée, il
+doit se faire remplacer par une autre pièce.
+Le joueur a le choix entre la Dame, la Tour, le
+Fou ou le Cavalier.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+35
+
+Nom :
+Prénom :
+Classe :
+
+Le pion
+
+Date :
+
+/21
+
+1. Indique d'une croix toutes les cases que peut atteindre le pion en 1 coup.
+
+2. Dans ces 3 situations, le pion va à promotion.
+Entoure la ou les pièce(s) de promotion qui matera ou materont l'adversaire.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+/12
+
+/9
+
+36
+
+Nom :
+Prénom :
+
+# - Échec et mat 8
+
+Classe :
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement du pion qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+37
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 9
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la pièce qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+38
+
+La position de départ.
+Du point de vue des Blancs.
+Trucs et astuces.
+
+Du point de vue des Noirs.
+
+• Poser l'échiquier face à soi avec
+une case blanche en bas à droite.
+• Les Tours vont dans les coins.
+• Les Cavalier se posent à côté des
+Tours.
+• Le couple royal se place au centre
+de la première rangée avec la
+Dame sur le case de sa couleur.
+• Les Fous encadrent le couple
+royal.
+• Les pions se placent sur la
+deuxième rangée.
+• Si l'échiquier est marqué d'un
+code alphanumérique, la rangée 1
+se trouvent du côté des Blancs, la
+8, du côté des Noirs.
+La Dame est sur la colonne d (d1
+pour les Blancs, d8 pour les
+Noirs).
+
+Les 3 phases d'une partie.
+
+1. L'ouverture :
+Chaque joueur pose son équipe sur le terrain. Il mobilise ses Cavaliers, ses Fous. Il prépare le roque,
+voire, il roque. Eviter de déplacer 2x la même pièce. Ne pas sortir sa Dame trop tôt.
+2. Le milieu de partie :
+Après l'ouverture, les pièces sont développées et la position équilibrée. Se pose alors la question
+cruciale et souvent déroutante pour le débutant : « Que faire ? ». Le milieu de partie est le moment où
+tout peut basculer d'un coté souvent suite à quelques combinaisons de base qu'il faut connaître
+(fourchette, échec double, échec à la découverte,...).
+3. La fin de partie ou finale :
+Après l'échange de la majorité des pièces, il ne reste plus souvent sur l'échiquier que les deux Rois,
+quelques pions et une ou deux pièces dans chaque camp. Une finale permet souvent de concrétiser
+l'avantage d'un pion supplémentaire. Si le camp possédant un pion de plus arrive à le mener jusqu'à la
+promotion il aura gagné ! (le pion se transformant en Dame, l'avantage sera décisif).
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+39
+
+Le roque, un coup de Roi !
+Le roque sert à mettre le Roi à l'abri.
+Le roque permet de mobiliser la Tour.
+Le roque invite le Roi et la Tour à jouer lors du même coup :
+–
+le Roi se déplace latéralement de 2 cases.
+–
+La Tour saute par-dessus le Roi et se met juste à côté de ce dernier.
+Il y a le petit roque et le grand roque.
+Avant le roque
+
+Le petit roque (0-0)
+
+Le grand roque (0-0-0)
+5 conditions :
+Les cases séparant le Roi et la Tour sont
+inoccupées.
+Le Roi et la Tour ne se sont pas encore
+déplacés.
+Le Roi n'est pas en échec.
+Le Roi ne traverse pas une case où il
+serait en échec.
+Le Roi n'arrive pas sur une case où il
+serait en échec.
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+40
+
+Nom :
+
+Le roque 0-0 / 0-0-0
+
+Prénom :
+Classe :
+
+/9
+
+Date :
+Peut-on faire le petit roque ?
+
+/3
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+ Oui  Non
+
+Peut-on faire le grand roque ?
+
+Peut-on faire le roque ?
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+/3
+
+/3
+
+41
+
+La pendule
+
+La gestion du temps.
+
+Le temps est un élément important dans une partie
+d'échecs.
+Il permet de circonscrire la partie dans un moment
+acceptable pour les joueurs et pour les
+organisateurs.
+Il permet de dynamiser le jeu.
+Chaque joueur aura un temps imparti pour terminer
+sa partie. S'il dépasse son temps imparti, il perd la
+partie.
+Le joueur qui a le trait réfléchit sur son propre
+temps. Son temps s'écoule.
+Dès qu'il a joué son coup, il arrête son temps et
+enclenche automatiquement le compte à rebours de
+son partenaire.
+La partie se termine soit sur l'échiquier : mat ou
+nulle, soit si le temps d'un des deux joueurs est
+écoulé.
+Pour calculer ces temps, on va utiliser une pendule
+composée de :
+- 2 cadrans, un pour chaque joueur.
+- 2 interrupteurs, un pour chaque joueur.
+Quand un interrupteur est ouvert, l'autre est fermé.
+Le temps s'écoule si l’interrupteur est ouvert.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+42
+
+La notation de partie
+Pour nous aider à progresser dans le jeu d'échecs, il est intéressant de
+rejouer ses parties pour voir ses bons coups et les ressortir plus tard, ou ses
+mauvais coups pour les éviter à l'avenir ; pour comprendre les pièges de son
+adversaire.
+Il est utile aussi de lire des conseils sur internet, dans des livres ou dans des
+magazines.
+Il est important de pouvoir lire et écrire des parties d'échecs.
+
+Chaque coup est numéroté.
+Chaque coup est composé du
+coup des Blancs et du coup des
+noirs.
+On désigne la pièce qui joue par
+sa lettre initiale (sauf pour le
+pion) et son déplacement par sa
+case d'arrivée.
+
+1. Ce5
+
+d5
+
+La prise est indiquée par le
+signe « x ».
+Échec : « + »
+Échec et mat : « # »
+Petit roque : « 0-0 »
+Grand roque : « 0-0-0 »
+
+2. Dxd5
+
+T7b8
+
+3. 0-0
+
+Tbe8
+
+4. Dg8 +
+
+TxDg8
+
+5. Cf7
+
+#
+
+Prise en passant : dxe5 e.p.
+Promotion : e8=D
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+43
+
+Exemple de
+feuille de
+notation de
+partie.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+44
+
+Nom :
+
+La notation
+
+Prénom :
+Classe :
+
+/9
+
+Date :
+
+Voici la position après :
+1. e4 e5
+2. Cf3 Cc6
+3. Cc3 Cf6
+4. d3 Ff5
+5. Fe2 0-0
+
+Note le 6e coup :
+
+Les Blancs jouent :
+
+6. ….... …....
+
+7. Cd5 …....
+
+Note le coup des Noirs :
+7. Cd5
+
+…....
+
+A présent, les Blancs vont jouer le 8e coup.
+Ils prennent un Cavalier Noir.
+1. Trace le coup sur l'échiquier à l'aide d'une flèche.
+2. Note le coup des Blancs :
+8. …....
+
+…....
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+45
+
+Jouer, c'est décider.
+
+A chaque fois que le joueur a le trait il est face à une nouvelle situation.
+Responsable et acteur, il est dans l'obligation d'agir. Critique et créatif, il fait en
+sorte que la situation lui soit favorable. Il doit prendre la meilleure décision.
+
+Nouvelle situation...
+1. Décrire la situation
+
+Comptabiliser le matériel dans les 2 camps.
+Comptabiliser le matériel en fonction des zones de l'échiquier : camps, ailes, centres.
+Relever les temps restants et le nombre de coups joués.
+Déterminer la phase de la partie : ouverture, milieu, fin de partie.
+Relever les niveaux des joueurs.
+2. Interpréter la situation, relever des tensions
+Mat
+
+Défense
+
+Attaque
+
+Échec
+
+Prise
+
+❏ Oui
+❏ Non
+❏ Menace
+
+❏ Oui
+❏ Non
+❏ Menace
+
+❏ Oui
+❏ Non
+❏ Pièce non
+protégée
+
+❏ Oui
+❏ Non
+❏ Menace
+
+❏ Oui
+❏ Non
+❏ Menace
+
+❏ Oui
+❏ Non
+❏ Pièce non
+protégée
+
+Coup tactique
+
+❏ Fourchette
+❏ Clouage
+❏ Enfilade
+❏ Double attaque
+❏ Attaque à la découverte
+❏ Roque
+❏ Zugzwang
+❏ Déviation
+❏ Fourchette
+❏ Clouage
+❏ Enfilade
+❏ Double attaque
+❏ Attaque à la découverte
+❏ Roque
+❏ Zugzwang
+❏ Déviation
+
+Rayonnement des pièces
+
+❏ Contrôle du centre
+❏ Ligne de pions
+❏ Occupation des colonnes
+❏ Occupation des
+diagonales
+❏ Cavaliers sur les bords
+❏ Contrôle du centre
+❏ Ligne de pions
+❏ Occupation des colonnes
+❏ Occupation des
+diagonales
+❏ Cavaliers sur les bords
+
+3. Analyser la situation
+S'arrêter sur les différentes tensions relevées.
+Classer les tensions en ordre : urgentes et importantes.
+Rappeler la stratégie mise en place, le ou les plan(s) en cours.
+4. Rechercher des solutions
+Lister différentes solutions.
+Faire preuve de créativité en essayant de combiner les résolutions de tensions : une réponse apportant
+plusieurs solutions. Garder la maîtrise du jeu afin de faire aboutir son plan.
+5. Choisir la meilleure solution
+Comparer les différentes solutions et choisir celle que l'on pense être la meilleure.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+46
+
+Jouer, c'est décider – exemple.
+Nouvelle situation :
+
+La plupart des enfants tomberaient
+dans le piège : … cxT, le pion
+prend la Tour
+Mais pourquoi est-ce un piège ?
+
+1. Décrire la situation
+Comptabiliser le matériel dans les 2 camps.
+Blancs :
+R + 1T + 1F + 3 pions = R + 11 points
+Noirs :
+R + 1T + 3 pions = R + 8 points
+Comptabiliser le matériel en fonction des zones de l'échiquier : camps, ailes, centres.
+Blancs : 1T + 1F dans le camp des Noirs
+Noirs : 1T dans le camp des Blancs
+Relever les temps restants et le nombre de coups joués.
+Indéterminés
+Déterminer la phase de la partie : ouverture, milieu, fin de partie.
+Fin de partie
+Relever les niveaux des joueurs.
+Indéterminés
+2. Interpréter la situation, relever des tensions – Vu des Noirs
+Mat
+
+Défense
+
+Attaque
+
+Échec
+
+Prise
+
+❏ Oui
+❏ Non
+ Menace
+si Fc4+ Rh8
+Td8+ #
+
+❏ Oui
+❏ Non
+ Menace
+
+❏ Oui
+ Non
+ Pièce non
+protégée
+
+❏ Oui
+ Non
+❏ Menace
+
+❏ Oui
+❏ Non
+ Menace
+
+ Oui (Td6)
+❏ Non
+ Pièce non
+protégée
+
+Coup tactique
+
+Fourchette (Fc4+)
+❏ Clouage
+❏ Enfilade
+❏ Double attaque
+❏ Attaque à la découverte
+❏ Roque
+ Zugzwang (Fc4+) (Td8+)
+❏ Déviation
+❏ Fourchette
+❏ Clouage
+❏ Enfilade
+❏ Double attaque
+❏ Attaque à la découverte
+❏ Roque
+ Zugzwang (Ta1+)
+❏ Déviation
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+Rayonnement des pièces
+
+❏ Contrôle du centre
+❏ Ligne de pions
+ Occupation des colonnes
+ Occupation des
+diagonales
+❏ Cavaliers sur les bords
+❏ Contrôle du centre
+❏ Ligne de pions
+ Occupation des colonnes
+❏ Occupation des
+diagonales
+❏ Cavaliers sur les bords
+
+47
+
+Jouer, c'est décider – exemple.
+3. Analyser la situation
+
+S'arrêter sur les différentes tensions relevées.
+Les Blancs ont l'avantage :
+- supériorité numérique, un Fou d'avance, soit 3 points.
+- supériorité territoriale, 2 pièces chez les Noirs contre une Noire chez les Blancs.
+- menace de mat éventuel à 2 coups.
+Les Noirs peuvent prendre la Tour et prendre l'avantage matériel.
+Les Blancs peuvent déplacer le Fou en c4 et ainsi prendre la Tour, vu que les Noirs devront parer
+l'échec.
+Classer les tensions en ordre : urgentes et importantes.
+Urgentes :
+Importantes :
+pion prend la Tour
+Menace de mat éventuel à 2 coups en faveur des Blancs
+Fou fait une fourchette
+Menaces d'échec dans les 2 camps
+Rappeler la stratégie mise en place, le ou les plan(s) en cours.
+Les Noirs doivent éviter de perdre leur Tour, c'est leur seul espoir de gain.
+Ils devraient essayer de prendre la Tour ou le Fou adverse pour équilibrer la partie.
+Les Noirs doivent maintenir la pression sur la Tour et la prendre.
+4. Rechercher des solutions
+Lister différentes solutions..
+Faire preuve de créativité en essayant de combiner les résolutions de tensions : une réponse apportant
+plusieurs solutions. Garder la maîtrise du jeu afin de faire aboutir son plan.
+Soit : … cxT, Fc4+
+Soit : … g6 ou g5 pour éviter le mat du couloir.
+Les Noirs devraient se dégager de la fourchette tout en maintenant la possibilité de capture de la Tour.
+Soit : … Ta1+,
+a. Rf2 cxT
+b. Ff1 cxT
+c.Td1 TxT+
+5. Choisir la meilleure solution
+Comparer les différentes solutions et choisir celle que l'on pense être la meilleure.
+Donc, si … cxT, Fc4+ Rf8 et FxT
+Ou si … g6 ou g5, Fc4+ Rf8 et FxT
+Dans les 2 cas, les Blancs gardent leur Fou d'avance, les Noirs n'ont plus que 3 pions, l'issue est
+favorable aux Blancs.
+Si … Ta1+, les Noirs gagnent la Tour des Blancs et prennent
+l'avantage matériel : T > F.
+Le meilleur coup des Noirs est : … Ta1+
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+48
+
+Nom :
+
+Jouer,
+c'est décider
+
+Prénom :
+Classe :
+Date :
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+49
+
+Nom :
+Prénom :
+Classe :
+
+# - Échec et mat 10
+
+Date :
+
+/9
+
+Mats en 1 coup
+Trace à l'aide d'une flèche le mouvement de la pièce qui mate le Roi adverse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+50
+
+Bibliographie
+Apprendre avec le jeu d'échecs de l'école au collège.
+Jérôme Maufras – Gérard Vaysse
+Éditions SCÉRÉN (CNDP-CRDP) / Olibris
+Le Guide Marabouts des Échecs
+Frits Van Seters
+Éditions Gérard & C°, Verviers, 1972
+La Diagonale du succès (Les vertus cachées du jeu d'échecs)
+Maurice Ashley
+Olibris 2008
+Simple Checkmates
+A.J. Gillam
+Édition Billing and Sons limited
+E.Sibbing, C. van Wijgerden - Méthode par étapes
+La méthode par Étapes est une méthode didactique qui sert à enseigner les échecs aux enfants (et aux
+adultes). Elle a été adoptée par de nombreuses écoles et clubs d'échecs aux Pays-Bas, en Belgique, en
+France, en Allemagne et en Suisse.
+La méthode se compose de six Étapes et pour chacune d'elles, il existe un manuel, qui s'adresse à
+l'entraîneur, à l'enseignant ou au parent, et plusieurs livres de travail avec des exercices, qu'utilisera
+l'élève.
+CHANDLER - Les Echecs, un Jeu d'Enfant!
+ALBURT, PELTS - Cours complet d'échecs
+Le plus gros et le plus complet des livres d'initiation - le plus scolaire aussi : des exercices, des
+révisions, des devoirs... Plutôt conçu au départ comme outil pédagogique, ce peut être aussi une bonne
+base de travail personnel.""
+PIERLOT - Vive les échecs !
+Un ouvrage d'initiation - et d'aide à l'initiation, car il est aussi conçu comme une aide pédagogique
+destinée à ceux qui doivent s'occuper de jeunes enfants.
+Beaucoup de matériel et quelques idées originales.
+ASHLEY - Comment gagner aux échecs - Les compétences indispensables
+GIFFARD, ELBILIA - 100 exercices pour progresser aux échecs
+''Cherchez le meilleur coup dans chacune de ces 100 positions (les exercices sont classés en cinq
+thèmes : ouvertures, finales, tactique et stratégie).''
+Maufras - Echecs et Maths CE1
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+51
+
+Sitographie
+www.chessinmyschool.com
+Ce site est une plate-forme de jeu en ligne destinée aux écoles.
+Les écoles intéressées peuvent demander la création d'un espace de jeu privé et
+gratuit dans lequel les enfants peuvent jouer en toute sécurité.
+Le jeu est asynchrone, ce qui permet de jouer calmement, quand on le souhaite.
+• L'administrateur crée et gère les comptes des joueurs de son école et peut consulter l'historique de
+connexion des joueurs.
+• Les joueurs peuvent jouer un nombre illimité de parties.
+• Les parties finies sont conservées et consultables à tout moment.
+• On peut jouer :
+- de simples parties
+- des tournois (chaque joueur aura alors 2 parties à jouer contre les autres joueurs du tournoi)
+- des matches en équipe. Système d’appariement : chaque membre d'une équipe joue 2 parties
+(une avec les blancs, une avec les noirs)
+• Pour les matches entre équipes, l'administrateur peut créer deux types d'équipes :
+- Interne fermée, permettant de faire jouer une classe contre une autre classe de la même école.
+- Ouverte, permettant d'envoyer un challenge à une équipe d'une autre école.
+L'administrateur gère les équipes ou en transmet la gestion à d'autres joueurs.
+En bas de chaque partie, une zone de conversation est disponible, permettant un échange entre les
+joueurs.
+http://anim.echecs35.fr/
+Ce site est destiné principalement aux animateurs et enseignants qui font découvrir le jeu d'échecs dans
+des ateliers ou dans leurs classes. Vous pourrez y puiser des idées d'activités sur le jeu lui-même mais
+aussi sur le thème des échecs. Vous y trouverez aussi des animations originales, des échanges entre
+classes, des exhibitions tout public etc.
+Plus particulièrement : http://anim.echecs35.fr/node/363
+http://www.fefb.be/
+C'est le site de Fédération Échiquéenne Francophone de Belgique : actualités.
+En suivant ce lien http://www.fefb.be/index.php/jeunes vous trouverez les informations spécifiques à la
+jeunesse.
+
+Fédération Échiquéenne Francophone de Belgique – 2016
+
+52
+
+

@@ -1,5 +1,5 @@
 {
-  "name": "chess-app",
+  "name": "ikochess",
   "version": "1.0.0",
   "description": "Real-time chess game with Telegram integration",
   "type": "module",
