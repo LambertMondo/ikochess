@@ -1,94 +1,94 @@
 <div align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" width="80" alt="Telegram Logo" />
-  <img src="https://cdn-icons-png.flaticon.com/512/811/811462.png" width="80" alt="Chess Logo" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" width="80" alt="Logo Telegram" />
+  <img src="https://cdn-icons-png.flaticon.com/512/811/811462.png" width="80" alt="Logo Échecs" />
 
   # ♟️ IkoChess
 
-  **The ultimate real-time multiplayer Chess WebApp seamlessly integrated with Telegram Groups.**
-
-  [**English**](README.md) | [Français](README.fr.md)
+  **L'application web d'échecs multijoueur en temps réel ultime, parfaitement intégrée aux groupes Telegram.**
+  
+  [English](README.en.md) | [**Français**](README.md)
 </div>
 
 <br />
 
-IkoChess allows Telegram communities to challenge each other directly in their group chats, play seamlessly through Telegram WebApps, increase their global ELO ranking, and watch their friends' matches live as spectators.
+IkoChess permet aux communautés Telegram de se défier directement dans leurs discussions de groupe, de jouer de manière transparente via les WebApps Telegram, d'augmenter leur classement mondial (ELO) et de regarder les matchs de leurs amis en direct en tant que spectateurs.
 
 ---
 
-## ✨ Features
+## ✨ Fonctionnalités
 
-- ⚔️ **Telegram Deep Integration**: Start a game directly from any Telegram group using the `/chess` command via the OpenClaw bot. No account creation needed – your Telegram profile *is* your account.
-- ⚡ **Real-Time Multiplayer**: Instant, lag-free move synchronization powered by **Socket.io**.
-- 🏆 **ELO Ranking System**: Gain or lose ELO points based on your match results (Win/Loss/Draw) against players globally.
-- 👀 **Live Spectator Mode**: Group members can open the same link to watch matches locally live, complete with a real-time spectator counter.
-- 🤖 **Stockfish AI**: Practice against the world's most powerful chess engine seamlessly integrated directly on the server, offering dynamic difficulties from *Easy* to *Grandmaster*.
-- 💬 **Interactive Socials**: Throw emojis (😤, 🔥, 💀) across the board to distract or congratulate your opponent mid-game!
-- ⏳ **Server-Auth Timers**: Highly accurate countdown timers synchronized and validated purely on the backend to prevent client-side manipulation.
+- ⚔️ **Intégration Telegram Profonde** : Lancez une partie directement depuis n'importe quel groupe Telegram en utilisant la commande `/chess` via le bot OpenClaw. Pas besoin de créer un compte – votre profil Telegram *est* votre compte.
+- ⚡ **Multijoueur en Temps Réel** : Synchronisation instantanée et sans décalage des mouvements, propulsée par **Socket.io**.
+- 🏆 **Système de Classement ELO** : Gagnez ou perdez des points ELO en fonction des résultats de vos matchs (Victoire/Défaite/Nul) contre des joueurs du monde entier.
+- 👀 **Mode Spectateur en Direct** : Les membres du groupe peuvent ouvrir le même lien pour regarder les matchs en cours, avec un compteur de spectateurs en temps réel.
+- 🤖 **IA Stockfish** : Entraînez-vous contre le moteur d'échecs le plus puissant au monde, intégré de manière transparente directement sur le serveur, offrant des niveaux de difficulté dynamiques allant de *Facile* à *Grand Maître*.
+- 💬 **Interactions Sociales** : Lancez des emojis (😤, 🔥, 💀) à travers le plateau pour distraire ou féliciter votre adversaire en pleine partie !
+- ⏳ **Minuteurs Validés par le Serveur** : Des comptes à rebours très précis, synchronisés et validés purement côté serveur pour empêcher toute manipulation côté client.
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Pile Technologique
 
-IkoChess is built on a robust, modern JavaScript stack designed for extremely fast real-time connectivity and horizontal scalability.
+IkoChess repose sur une pile JavaScript moderne et robuste, conçue pour une connectivité en temps réel extrêmement rapide et une scalabilité horizontale.
 
 ### Frontend
-- ⚛️ **React 18** (`react`, `react-dom`) — For building a highly reactive component-based UI.
-- ⚡ **Vite** — Ultra-fast frontend tooling and bundling.
-- ♜ **React-Chessboard** & **Chess.js** — For flawless visual board rendering and strict legal move generation/validation.
-- 🔌 **Socket.io-Client** — Instant bidirectional event passing.
+- ⚛️ **React 18** (`react`, `react-dom`) — Pour construire une interface utilisateur réactive à base de composants.
+- ⚡ **Vite** — Outil et bundler frontend ultra-rapide.
+- ♜ **React-Chessboard** & **Chess.js** — Pour un rendu visuel impeccable du plateau et une génération/validation stricte des mouvements légaux.
+- 🔌 **Socket.io-Client** — Transmission instantanée et bidirectionnelle d'événements.
 
 ### Backend
-- 🟢 **Node.js** & **Express** — Fast, event-driven, non-blocking I/O API layer.
-- 🔌 **Socket.io** — The backbone of the real-time event broadcasting (rooms, namespaces).
-- 🗄️ **Supabase (PostgreSQL)** — Database-as-a-Service for storing player stats, ELOs, and match history securely.
-- 🐳 **Docker & Docker Compose** — Fully containerized for rapid, platform-agnostic deployments.
-- 🧠 **Stockfish.js** *(New in V2)* — Server-side evaluation engine.
+- 🟢 **Node.js** & **Express** — Couche API rapide, pilotée par les événements et aux E/S non bloquantes.
+- 🔌 **Socket.io** — L'épine dorsale de la diffusion des événements en temps réel (rooms, namespaces).
+- 🗄️ **Supabase (PostgreSQL)** — Base de données en tant que service (Database-as-a-Service) pour stocker en toute sécurité les statistiques des joueurs, l'ELO et l'historique des matchs.
+- 🐳 **Docker & Docker Compose** — Entièrement conteneurisé pour des déploiements rapides et agnostiques vis-à-vis des plateformes.
+- 🧠 **Stockfish.js** *(Nouveau dans la V2)* — Moteur d'évaluation côté serveur.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Pour Commencer
 
-To spin up a local development instance of IkoChess, ensure you have **Node.js 20+** and **Docker** installed.
+Pour lancer une instance de développement locale de IkoChess, assurez-vous d'avoir installé **Node.js 20+** et **Docker**.
 
-### 1. Clone the repository
+### 1. Cloner le dépôt
 
 ```bash
 git clone https://github.com/votre-nom/ikochess.git
 cd ikochess
 ```
 
-### 2. Configure Environment Variables
+### 2. Configurer les Variables d'Environnement
 
-Create a `.env` file in the root and `server/` directories:
+Créez un fichier `.env` à la racine et dans le répertoire `server/` :
 
 ```env
-# Supabase Configuration
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_KEY=your_supabase_service_key
+# Configuration Supabase
+VITE_SUPABASE_URL=votre_url_supabase
+VITE_SUPABASE_ANON_KEY=votre_cle_anonyme_supabase
+SUPABASE_SERVICE_KEY=votre_cle_de_service_supabase
 
 # Ports
 PORT=3000
 VITE_SERVER_URL=http://localhost:3000
 ```
 
-### 3. Build and Run via Docker
+### 3. Construire et Démarrer via Docker
 
-The easiest way to boot both the compiled client and the backend server:
+La façon la plus simple de démarrer à la fois le client compilé et le serveur backend :
 
 ```bash
 docker compose up --build -d
 ```
-*(The application will be exposed on `http://localhost:3000`)*
+*(L'application sera exposée sur `http://localhost:3000`)*
 
 ---
 
 ## 🏛️ Architecture & Refactoring (V2)
-IkoChess recently underwent a major architectural refactor to migrate from a monolithic structure to a highly modular, decoupled service design featuring React components, specialized Socket controllers, and Redis pub/sub integration.
+IkoChess a récemment subi un refactoring architectural majeur pour passer d'une structure monolithique à une conception de services hautement modulaire et découplée, comprenant des composants React, des contrôleurs Socket spécialisés et une intégration pub/sub Redis.
 
-For a deep dive into the system's design patterns, read the [**Architecture Documentation**](./IkoChess_Architecture.md).
+Pour une plongée en profondeur dans les modèles de conception du système, lisez la [**Documentation d'Architecture**](./IkoChess_Architecture.md).
 
 ---
 
-## 📜 License
-This project is licensed under the [MIT License](LICENSE).
+## 📜 Licence
+Ce projet est sous [Licence MIT](LICENSE).
