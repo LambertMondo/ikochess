@@ -1,5 +1,5 @@
 import express from 'express'
-import { supabase, ensurePlayer } from './db.js'
+import { supabase, ensurePlayer, setPlayerClan, getClanRankings, getClanMembers, createTournament, joinTournament, getActiveTournaments } from './db.js'
 
 export const setupRoutes = (app, games, players) => {
   // ── Create challenge (called by Telegram bot plugin) ──
@@ -126,5 +126,56 @@ export const setupRoutes = (app, games, players) => {
       timers: gameData.timers,
       ready: gameData.ready
     })
+  })
+
+  // ── Sprint 3: Clan Wars & Groups ──
+  app.post('/api/setclan', async (req, res) => {
+    const { telegramId, groupId, groupName } = req.body
+    
+    // Ensure player exists
+    await ensurePlayer(telegramId)
+
+    // Ensure group exists in Supabase (OpenClaw should have it, but just in case)
+    const { data: existingGroup } = await supabase.from('groups').select('id').eq('id', groupId).single()
+    if (!existingGroup && groupName) {
+      await supabase.from('groups').insert({ id: groupId, name: groupName })
+    }
+
+    const result = await setPlayerClan(telegramId, groupId)
+    if (!result.success) return res.status(400).json({ error: result.error })
+    res.json({ success: true, message: 'Clan mis à jour avec succès.' })
+  })
+
+  app.get('/api/groups/rankings', async (req, res) => {
+    const rankings = await getClanRankings(20)
+    res.json(rankings)
+  })
+
+  app.get('/api/groups/:groupId/members', async (req, res) => {
+    const members = await getClanMembers(req.params.groupId)
+    res.json(members)
+  })
+
+  // ── Sprint 3: Tournois ──
+  app.post('/api/tournaments', async (req, res) => {
+    const { groupId, name, format, maxPlayers } = req.body
+    if (!groupId || !name) return res.status(400).json({ error: 'groupId et name requis' })
+    const result = await createTournament(groupId, name, format, maxPlayers)
+    if (!result.success) return res.status(500).json({ error: result.error })
+    res.json(result)
+  })
+
+  app.get('/api/tournaments', async (req, res) => {
+    const { groupId } = req.query
+    const tournaments = await getActiveTournaments(groupId)
+    res.json(tournaments)
+  })
+
+  app.post('/api/tournaments/:id/join', async (req, res) => {
+    const { telegramId } = req.body
+    if (!telegramId) return res.status(400).json({ error: 'telegramId requis' })
+    const result = await joinTournament(req.params.id, telegramId)
+    if (!result.success) return res.status(400).json({ error: result.error })
+    res.json({ success: true, message: 'Inscription réussie.' })
   })
 }

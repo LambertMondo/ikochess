@@ -147,6 +147,118 @@ export const getPlayerProfile = async (telegramId) => {
   }
 }
 
+// ── Clans & Groups (Sprint 3) ──
+export const setPlayerClan = async (telegramId, groupId) => {
+  try {
+    const { data: group } = await supabase.from('groups').select('id').eq('id', groupId).single()
+    if (!group) return { success: false, error: 'Groupe introuvable.' }
+
+    const { data: player } = await supabase.from('players').select('clan_changed_at').eq('telegram_id', telegramId).single()
+    if (player?.clan_changed_at) {
+      const changedTime = new Date(player.clan_changed_at).getTime()
+      if (Date.now() - changedTime < 90 * 24 * 60 * 60 * 1000) {
+        return { success: false, error: 'Tu as déjà changé de clan récemment. Reviens dans 90 jours.' }
+      }
+    }
+
+    await supabase.from('players').update({ 
+      clan_group_id: groupId, 
+      clan_changed_at: new Date().toISOString() 
+    }).eq('telegram_id', telegramId)
+
+    return { success: true }
+  } catch (err) {
+    console.error('setPlayerClan error:', err)
+    return { success: false, error: err.message }
+  }
+}
+
+export const getClanRankings = async (limit = 20) => {
+  try {
+    const { data } = await supabase
+      .from('groups')
+      .select('id, name, group_elo, wars_won, total_wars')
+      .order('group_elo', { ascending: false })
+      .limit(limit)
+    return data || []
+  } catch (err) {
+    console.error('getClanRankings error:', err)
+    return []
+  }
+}
+
+export const getClanMembers = async (groupId) => {
+  try {
+    const { data } = await supabase
+      .from('players')
+      .select('telegram_id, username, elo, title')
+      .eq('clan_group_id', groupId)
+      .order('elo', { ascending: false })
+    return data || []
+  } catch (err) {
+    console.error('getClanMembers error:', err)
+    return []
+  }
+}
+
+// ── Tournaments (Sprint 3) ──
+export const createTournament = async (groupId, name, format = 'elimination', maxPlayers = 8) => {
+  try {
+    const { data, error } = await supabase.from('tournaments').insert({
+      group_id: groupId,
+      name,
+      format,
+      max_players: maxPlayers,
+      status: 'registration'
+    }).select('id').single()
+    if (error) throw error
+    return { success: true, tournamentId: data.id }
+  } catch (err) {
+    console.error('createTournament error:', err)
+    return { success: false, error: err.message }
+  }
+}
+
+export const joinTournament = async (tournamentId, telegramId) => {
+  try {
+    await ensurePlayer(telegramId)
+    const { data: t } = await supabase.from('tournaments')
+      .select('status, max_players').eq('id', tournamentId).single()
+    
+    if (!t || t.status !== 'registration') return { success: false, error: 'Tournoi fermé ou introuvable.' }
+
+    const { count } = await supabase.from('tournament_participants')
+      .select('*', { count: 'exact', head: true })
+      .eq('tournament_id', tournamentId)
+
+    if (count >= t.max_players) return { success: false, error: 'Le tournoi est plein.' }
+
+    const { error } = await supabase.from('tournament_participants')
+      .insert({ tournament_id: tournamentId, player_id: telegramId })
+      
+    if (error) {
+      if (error.code === '23505') return { success: false, error: 'Tu es déjà inscrit à ce tournoi.' }
+      throw error
+    }
+    return { success: true }
+  } catch (err) {
+    console.error('joinTournament error:', err)
+    return { success: false, error: err.message }
+  }
+}
+
+export const getActiveTournaments = async (groupId) => {
+  try {
+    let query = supabase.from('tournaments').select('*').in('status', ['registration', 'active'])
+    if (groupId) query = query.eq('group_id', groupId)
+    const { data } = await query
+    return data || []
+  } catch (err) {
+    console.error('getActiveTournaments error:', err)
+    return []
+  }
+}
+
 // ── Leaderboard ──
 export const getLeaderboard = async (limit = 20) => {
   try {

@@ -394,6 +394,37 @@ h1.app-title {
   margin-bottom: 20px;
 }
 
+.lb-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 10px;
+}
+
+.lb-tab {
+  background: transparent;
+  border: none;
+  color: var(--tg-gray);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.lb-tab:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+.lb-tab.active {
+  background: var(--tg-blue);
+  color: #fff;
+}
+
+
 .lb-trophy {
   font-size: 1.8rem;
 }
