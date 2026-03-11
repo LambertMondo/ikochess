@@ -7,10 +7,14 @@ CREATE TABLE IF NOT EXISTS players (
   telegram_id VARCHAR(50) UNIQUE NOT NULL,
   username VARCHAR(100),
   elo INTEGER DEFAULT 1200,
+  title VARCHAR(50) DEFAULT 'Novice',
+  score INTEGER DEFAULT 0,
   games_played INTEGER DEFAULT 0,
   games_won INTEGER DEFAULT 0,
   games_lost INTEGER DEFAULT 0,
   games_drawn INTEGER DEFAULT 0,
+  win_streak INTEGER DEFAULT 0,
+  best_streak INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -25,18 +29,33 @@ CREATE TABLE IF NOT EXISTS games (
   moves JSONB DEFAULT '[]',
   fen_start VARCHAR(100),
   fen_end VARCHAR(100),
-  result VARCHAR(20), -- 'white-wins', 'black-wins', 'draw'
-  reason VARCHAR(50), -- 'checkmate', 'timeout', 'resignation', 'draw'
+  result VARCHAR(20),
+  reason VARCHAR(50),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   ended_at TIMESTAMP WITH TIME ZONE
 );
 
--- Create indexes for performance
+-- Season history
+CREATE TABLE IF NOT EXISTS season_history (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  player_id VARCHAR(50) NOT NULL,
+  season INTEGER NOT NULL,
+  final_elo INTEGER,
+  final_title VARCHAR(50),
+  group_defended TEXT,
+  wins INTEGER DEFAULT 0,
+  losses INTEGER DEFAULT 0,
+  season_end TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(player_id, season)
+);
+
+-- Indexes
 CREATE INDEX IF NOT EXISTS idx_players_elo ON players(elo DESC);
 CREATE INDEX IF NOT EXISTS idx_players_telegram ON players(telegram_id);
 CREATE INDEX IF NOT EXISTS idx_games_white ON games(white_player_id);
 CREATE INDEX IF NOT EXISTS idx_games_black ON games(black_player_id);
 CREATE INDEX IF NOT EXISTS idx_games_created ON games(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_season_history_player ON season_history(player_id, season DESC);
 
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -53,13 +72,17 @@ CREATE TRIGGER update_players_updated_at
   FOR EACH ROW
   EXECUTE FUNCTION update_updated_at_column();
 
--- Enable Row Level Security (optional, for production)
+-- Enable Row Level Security
 ALTER TABLE players ENABLE ROW LEVEL SECURITY;
 ALTER TABLE games ENABLE ROW LEVEL SECURITY;
+ALTER TABLE season_history ENABLE ROW LEVEL SECURITY;
 
--- Policies (allow all for now, restrict in production)
+-- Policies
 CREATE POLICY "Allow all operations on players" ON players
   FOR ALL USING (true) WITH CHECK (true);
 
 CREATE POLICY "Allow all operations on games" ON games
+  FOR ALL USING (true) WITH CHECK (true);
+
+CREATE POLICY "Allow all on season_history" ON season_history
   FOR ALL USING (true) WITH CHECK (true);

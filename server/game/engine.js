@@ -1,4 +1,4 @@
-import { getPlayerName, getPlayerElo, updatePlayerStats, saveGame, supabase } from '../db.js'
+import { getPlayerName, getPlayerElo, updatePlayerStats, saveGame, supabase, getTitleFromElo } from '../db.js'
 
 export const DEFAULT_TIME_MS = 15 * 60 * 1000 // 15 minutes per player
 
@@ -134,7 +134,9 @@ export const handleGameOver = async (gameId, gameData, games, io, overrideReason
     result, reason,
     whiteName, blackName,
     whiteElo: whiteElo + whiteChange, blackElo: blackElo + blackChange,
-    whiteChange, blackChange
+    whiteChange, blackChange,
+    whiteTitle: getTitleFromElo(whiteElo + whiteChange),
+    blackTitle: getTitleFromElo(blackElo + blackChange)
   })
 
   // Cleanup: remove game from memory after 60 seconds to allow late reconnects

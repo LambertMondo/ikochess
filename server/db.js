@@ -10,6 +10,24 @@ export const supabase = createClient(
 
 export const AI_PLAYER_ID = 'AI_OPENCLAW'
 
+// ── Title system ──
+const TITLE_THRESHOLDS = [
+  { min: 1800, title: 'Légende',       icon: '👑' },
+  { min: 1600, title: 'Grand Maître',  icon: '♚' },
+  { min: 1400, title: 'Maître',        icon: '♛' },
+  { min: 1200, title: 'Expert',        icon: '♜' },
+  { min: 1000, title: 'Joueur',        icon: '♝' },
+  { min: 800,  title: 'Amateur',       icon: '♞' },
+  { min: 0,    title: 'Novice',        icon: '♟' }
+]
+
+export const getTitleFromElo = (elo) => {
+  for (const t of TITLE_THRESHOLDS) {
+    if (elo >= t.min) return t
+  }
+  return TITLE_THRESHOLDS[TITLE_THRESHOLDS.length - 1]
+}
+
 export const ensurePlayer = async (telegramId, username) => {
   if (!telegramId || telegramId === AI_PLAYER_ID) return
   try {
@@ -50,7 +68,7 @@ export const updatePlayerStats = async (telegramId, eloChange, result) => {
   try {
     const { data: player, error: fetchErr } = await supabase
       .from('players')
-      .select('elo, score, games_played, games_won, games_lost, games_drawn')
+      .select('elo, score, games_played, games_won, games_lost, games_drawn, win_streak, best_streak')
       .eq('telegram_id', telegramId).single()
     
     if (fetchErr || !player) return
@@ -58,18 +76,94 @@ export const updatePlayerStats = async (telegramId, eloChange, result) => {
     // Scoring: Win=3, Draw=1, Loss=0
     const scoreAdd = result === 'win' ? 3 : result === 'draw' ? 1 : 0
 
+    // Streak tracking
+    let newStreak = result === 'win' ? (player.win_streak || 0) + 1 : 0
+    let bestStreak = Math.max(player.best_streak || 0, newStreak)
+
+    // New ELO and title
+    const newElo = Math.max(100, player.elo + eloChange)
+    const { title } = getTitleFromElo(newElo)
+
     const updates = {
-      elo: Math.max(100, player.elo + eloChange),
+      elo: newElo,
+      title,
       score: (player.score || 0) + scoreAdd,
       games_played: player.games_played + 1,
       games_won: player.games_won + (result === 'win' ? 1 : 0),
       games_lost: player.games_lost + (result === 'loss' ? 1 : 0),
       games_drawn: player.games_drawn + (result === 'draw' ? 1 : 0),
+      win_streak: newStreak,
+      best_streak: bestStreak,
       updated_at: new Date().toISOString()
     }
     await supabase.from('players').update(updates).eq('telegram_id', telegramId)
   } catch (err) {
     console.error('Stats update error:', err)
+  }
+}
+
+// ── Player Profile ──
+export const getPlayerProfile = async (telegramId) => {
+  if (telegramId === AI_PLAYER_ID) return null
+  try {
+    const { data: player } = await supabase
+      .from('players')
+      .select('telegram_id, username, elo, title, score, games_played, games_won, games_lost, games_drawn, win_streak, best_streak, created_at')
+      .eq('telegram_id', telegramId)
+      .single()
+
+    if (!player) return null
+
+    const titleInfo = getTitleFromElo(player.elo)
+    const winRate = player.games_played > 0
+      ? Math.round((player.games_won / player.games_played) * 100)
+      : 0
+
+    // Last 10 games
+    const { data: recentGames } = await supabase
+      .from('games')
+      .select('game_id, white_player_id, black_player_id, winner_id, result, reason, ended_at')
+      .or(`white_player_id.eq.${telegramId},black_player_id.eq.${telegramId}`)
+      .order('ended_at', { ascending: false })
+      .limit(10)
+
+    // Season history
+    const { data: seasons } = await supabase
+      .from('season_history')
+      .select('*')
+      .eq('player_id', telegramId)
+      .order('season', { ascending: false })
+
+    return {
+      ...player,
+      titleIcon: titleInfo.icon,
+      winRate,
+      recentGames: recentGames || [],
+      seasons: seasons || []
+    }
+  } catch (err) {
+    console.error('Get profile error:', err)
+    return null
+  }
+}
+
+// ── Leaderboard ──
+export const getLeaderboard = async (limit = 20) => {
+  try {
+    const { data } = await supabase
+      .from('players')
+      .select('telegram_id, username, elo, title, games_played, games_won')
+      .order('elo', { ascending: false })
+      .limit(limit)
+
+    return (data || []).map((p, i) => ({
+      ...p,
+      rank: i + 1,
+      titleIcon: getTitleFromElo(p.elo).icon
+    }))
+  } catch (err) {
+    console.error('Leaderboard error:', err)
+    return []
   }
 }
 

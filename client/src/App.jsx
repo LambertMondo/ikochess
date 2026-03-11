@@ -289,8 +289,8 @@ function App() {
           title,
           message,
           players: {
-            white: { name: data.whiteName },
-            black: { name: data.blackName }
+            white: { name: `${data.whiteTitle?.icon || '♟'} ${data.whiteName}` },
+            black: { name: `${data.blackTitle?.icon || '♟'} ${data.blackName}` }
           },
           eloChanges: {
             white: { newElo: data.whiteElo, change: data.whiteChange },

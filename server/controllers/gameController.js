@@ -1,5 +1,5 @@
 import { Chess } from 'chess.js'
-import { AI_PLAYER_ID, ensurePlayer, getPlayerName, supabase } from '../db.js'
+import { AI_PLAYER_ID, ensurePlayer, getPlayerName, getPlayerProfile, getLeaderboard, supabase } from '../db.js'
 import { getAiMove } from '../ai.js'
 import { startTimer, handleGameOver, DEFAULT_TIME_MS, evaluateMoveQuality } from '../game/engine.js'
 
@@ -206,6 +206,22 @@ export const registerGameHandlers = (io, socket, games, players) => {
     const winnerColor = playerColor === 'white' ? 'black' : 'white'
 
     await handleGameOver(gameId, gameData, games, io, 'resignation', winnerColor)
+  })
+
+  // ── Profile & Leaderboard ──
+  socket.on('get-profile', async ({ telegramId }) => {
+    const targetId = telegramId || socket.telegramId
+    if (!targetId) return socket.emit('error', { message: 'ID joueur manquant' })
+
+    const profile = await getPlayerProfile(targetId)
+    if (!profile) return socket.emit('error', { message: 'Joueur introuvable' })
+
+    socket.emit('player-profile', profile)
+  })
+
+  socket.on('get-leaderboard', async ({ limit }) => {
+    const leaderboard = await getLeaderboard(limit || 20)
+    socket.emit('leaderboard-data', leaderboard)
   })
 
 }
