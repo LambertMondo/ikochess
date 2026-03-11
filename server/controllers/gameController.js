@@ -208,11 +208,4 @@ export const registerGameHandlers = (io, socket, games, players) => {
     await handleGameOver(gameId, gameData, games, io, 'resignation', winnerColor)
   })
 
-  socket.on('emoji', ({ gameId, emoji }) => {
-    const gameData = games.get(gameId)
-    if (!gameData || gameData.finished) return
-
-    const playerColor = gameData.white === socket.telegramId ? 'white' : 'black'
-    socket.to(gameId).emit('emoji', { color: playerColor, emoji })
-  })
 }

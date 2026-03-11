@@ -66,9 +66,11 @@ export const getAiMove = async (game, difficulty) => {
             const to = bestMoveUci.substring(2, 4);
             const promotion = bestMoveUci.length > 4 ? bestMoveUci[4] : undefined;
             
-            const moveResult = game.move({ from, to, promotion });
+            // Use a clone to avoid race conditions on the shared game state
+            const { Chess } = require('chess.js');
+            const testGame = new Chess(game.fen());
+            const moveResult = testGame.move({ from, to, promotion });
             if (moveResult) {
-              game.undo(); // undo the temp test move
               clearTimeout(timeout);
               try { engine.postMessage('quit'); } catch(e) {}
               resolve(moveResult.san);

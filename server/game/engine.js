@@ -1,4 +1,4 @@
-import { getPlayerName, getPlayerElo, updatePlayerStats, saveGame } from '../db.js'
+import { getPlayerName, getPlayerElo, updatePlayerStats, saveGame, supabase } from '../db.js'
 
 export const DEFAULT_TIME_MS = 15 * 60 * 1000 // 15 minutes per player
 
@@ -95,6 +95,8 @@ export const handleGameOver = async (gameId, gameData, games, io, overrideReason
     reason = 'threefold-repetition'
   } else if (gameData.game.isInsufficientMaterial()) {
     reason = 'insufficient-material'
+  } else if (gameData.game.isDrawByFiftyMoves()) {
+    reason = 'fifty-move-rule'
   }
 
   const whiteName = await getPlayerName(gameData.white)
@@ -126,8 +128,7 @@ export const handleGameOver = async (gameId, gameData, games, io, overrideReason
 
   await saveGame(gameId, gameData, result, reason, winner)
 
-  // We could update challenge status in the db if needed:
-  // await supabase.from('chess_challenges').update({ status: 'finished' }).eq('game_id', gameId)
+  await supabase.from('chess_challenges').update({ status: 'finished' }).eq('game_id', gameId)
 
   io.to(gameId).emit('game-over', {
     result, reason,
@@ -136,5 +137,6 @@ export const handleGameOver = async (gameId, gameData, games, io, overrideReason
     whiteChange, blackChange
   })
 
-  // Cleanup will be handled by caller after emission
+  // Cleanup: remove game from memory after 60 seconds to allow late reconnects
+  setTimeout(() => games.delete(gameId), 60000)
 }

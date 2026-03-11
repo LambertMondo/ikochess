@@ -47,6 +47,8 @@ function App() {
   const [gameOverData, setGameOverData] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [activeEmojis, setActiveEmojis] = useState({ white: null, black: null });
+  const [drawOfferReceived, setDrawOfferReceived] = useState(false);
+  const [drawOfferFrom, setDrawOfferFrom] = useState(null);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [hasGameId, setHasGameId] = useState(false);
 
@@ -94,9 +96,13 @@ function App() {
     // Local countdown timer approximation to make the UI look active
     syncTimerRef.current = setInterval(() => {
       setTimers(prev => {
-        if (status === 'finished' || status === 'waiting' || status === 'connecting' || !prev.lastUpdate) return prev;
-        let newTimers = { ...prev };
-        return newTimers;
+        if (!prev.lastUpdate) return prev;
+        const now = Date.now();
+        const elapsed = now - prev.lastUpdate;
+        // Determine which color's timer is ticking based on game turn
+        // We need to read the current game, but since this is in a closure
+        // we read it from the ref-like approach of updating functional state
+        return { ...prev, lastUpdate: now, _elapsed: elapsed };
       });
     }, 100);
 
@@ -230,10 +236,69 @@ function App() {
       }, 3000);
     });
 
+    // Draw Offer Events
+    newSocket.on('draw-offered', (data) => {
+      setDrawOfferReceived(true);
+      setDrawOfferFrom(data.from);
+    });
+
+    newSocket.on('draw-declined', () => {
+      setDrawOfferReceived(false);
+      setDrawOfferFrom(null);
+    });
+
+    // Game Ready To Play
+    newSocket.on('game-ready-to-play', () => {
+      setPlayersReady({ white: true, black: true });
+    });
+
     // Game Over Event
-    newSocket.on('game_over', (data) => {
+    newSocket.on('game-over', (data) => {
       setStatus('finished');
-      setGameOverData(data);
+      // Transform server data into format expected by GameOverModal
+      setMyColor(currentColor => {
+        const isMyWin = data.result.includes(currentColor || '');
+        const isDraw = data.result === 'draw';
+        let title, message;
+        
+        const reasonMap = {
+          'checkmate': 'Échec et mat',
+          'resignation': 'Abandon',
+          'timeout': 'Temps écoulé',
+          'stalemate': 'Pat',
+          'threefold-repetition': 'Triple répétition',
+          'insufficient-material': 'Matériel insuffisant',
+          'fifty-move-rule': 'Règle des 50 coups',
+          'agreement': 'Accord mutuel',
+          'draw': 'Nulle'
+        };
+        const reasonText = reasonMap[data.reason] || data.reason;
+        
+        if (isDraw) {
+          title = '🤝 Match nul';
+          message = reasonText;
+        } else if (isMyWin) {
+          title = '🏆 Victoire !';
+          message = reasonText;
+        } else {
+          title = '💔 Défaite';
+          message = reasonText;
+        }
+        
+        setGameOverData({
+          title,
+          message,
+          players: {
+            white: { name: data.whiteName },
+            black: { name: data.blackName }
+          },
+          eloChanges: {
+            white: { newElo: data.whiteElo, change: data.whiteChange },
+            black: { newElo: data.blackElo, change: data.blackChange }
+          }
+        });
+        return currentColor;
+      });
     });
 
     // Error logic
@@ -247,22 +312,25 @@ function App() {
     };
   }, []);
 
-  const onPieceDrop = (sourceSquare, targetSquare) => {
-    if (status !== 'your-turn' && !isAiGame) return false;
-    // For single player testing or unassigned colors, bypass if needed
-    if (!myColor && !isAiGame) return false;
+  const onPieceDrop = (sourceSquare, targetSquare, piece) => {
+    if (status !== 'your-turn') return false;
+    if (!myColor) return false;
 
     try {
-      // The react-chessboard component handles the auto-promote to Queen UI logic implicitly
-      // We force a promotion if it's the 8th rank for pawn
-      let moveObj = {
-        from: sourceSquare,
-        to: targetSquare,
-        promotion: 'q' // Simplification
-      };
+      // Check if this is a promotion move — if so, return false to let
+      // react-chessboard's promotion dialog handle it
+      const movingPiece = game.get(sourceSquare);
+      if (movingPiece?.type === 'p') {
+        const isPromo = (myColor === 'white' && targetSquare[1] === '8') ||
+                        (myColor === 'black' && targetSquare[1] === '1');
+        if (isPromo) {
+          // Store the pending move for onPromotionPieceSelect
+          return false; // Let the promotion dialog appear
+        }
+      }
 
       const gameCopy = new Chess(game.fen());
-      const move = gameCopy.move(moveObj);
+      const move = gameCopy.move({ from: sourceSquare, to: targetSquare });
       
       if (move === null) return false;
       setGame(gameCopy);
@@ -278,13 +346,50 @@ function App() {
 
   const handleEmojiSend = (emoji) => {
     if (!myColor || isSpectator) return;
-    socket.emit('emoji', { gameId, emoji });
+    socket.emit('send-emoji', { gameId, emoji });
     setShowEmojiPicker(false);
   };
 
   const handleReady = () => {
     socket.emit('player-ready', { gameId });
     if (myColor) setPlayersReady(prev => ({ ...prev, [myColor]: true }));
+  };
+
+  // ── Promotion handlers (C1 - FIDE rule) ──
+  // Called by react-chessboard to check if a move is a promotion
+  const onPromotionCheck = (sourceSquare, targetSquare, piece) => {
+    const movingPiece = game.get(sourceSquare);
+    if (!movingPiece || movingPiece.type !== 'p') return false;
+    return (movingPiece.color === 'w' && targetSquare[1] === '8') ||
+           (movingPiece.color === 'b' && targetSquare[1] === '1');
+  };
+
+  // Called when user selects a promotion piece from the dialog
+  const onPromotionPieceSelect = (piece, promoteFromSquare, promoteToSquare) => {
+    if (!piece) return false; // User cancelled
+    
+    // Extract the piece type from the react-chessboard format (e.g., 'wQ' -> 'q')
+    const promotionPiece = piece[1]?.toLowerCase();
+    if (!promotionPiece) return false;
+
+    try {
+      const gameCopy = new Chess(game.fen());
+      const move = gameCopy.move({
+        from: promoteFromSquare,
+        to: promoteToSquare,
+        promotion: promotionPiece
+      });
+
+      if (move === null) return false;
+      setGame(gameCopy);
+      setStatus('opponent-turn');
+      setSelectedSquare(null);
+      setLegalMoves([]);
+      socket.emit('make-move', { gameId, move: move.san });
+      return true;
+    } catch (e) {
+      return false;
+    }
   };
 
   // ── Tap-to-Move ──
@@ -295,8 +400,7 @@ function App() {
 
     if (selectedSquare) {
       if (legalMoves.some(m => m.to === square)) {
-        const isPromotion = piece === null &&
-          game.get(selectedSquare)?.type === 'p' &&
+        const isPromotion = game.get(selectedSquare)?.type === 'p' &&
           ((myColor === 'white' && square[1] === '8') || (myColor === 'black' && square[1] === '1'));
 
         const move = { from: selectedSquare, to: square, promotion: isPromotion ? 'q' : undefined };
@@ -405,6 +509,8 @@ function App() {
             if (status !== 'your-turn') return false;
             return true;
           }}
+          onPromotionPieceSelect={onPromotionPieceSelect}
+          onPromotionCheck={onPromotionCheck}
         />
         
         {status === 'connecting' && <div className="status-text">Connexion au serveur...</div>}
@@ -446,11 +552,13 @@ function App() {
         gameStatus={status}
         isAiGame={isAiGame}
         isReady={isReady}
+        drawOfferReceived={drawOfferReceived}
+        drawOfferFrom={drawOfferFrom}
         onReady={handleReady}
         onResign={() => socket && socket.emit('resign', { gameId })}
         onOfferDraw={() => socket && socket.emit('offer-draw', { gameId })}
-        onAcceptDraw={() => socket && socket.emit('accept-draw', { gameId })}
-        onDeclineDraw={() => socket && socket.emit('decline-draw', { gameId })}
+        onAcceptDraw={() => { socket && socket.emit('accept-draw', { gameId }); setDrawOfferReceived(false); setDrawOfferFrom(null); }}
+        onDeclineDraw={() => { socket && socket.emit('decline-draw', { gameId }); setDrawOfferReceived(false); setDrawOfferFrom(null); }}
       />
       
       {showEmojiPicker && (

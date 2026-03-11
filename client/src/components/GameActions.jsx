@@ -6,7 +6,11 @@ export const GameActions = ({
   gameStatus, 
   isAiGame, 
   drawOfferPending,
+  drawOfferReceived,
+  drawOfferFrom,
   onOfferDraw,
+  onAcceptDraw,
+  onDeclineDraw,
   onResign,
   onReady,
   isReady 
@@ -41,7 +45,8 @@ export const GameActions = ({
           >
             {confirmResign ? '⚠️ Confirmer ?' : '🏳️ Abandonner'}
           </button>
-          {!isAiGame && (
+
+          {!isAiGame && !drawOfferReceived && (
             <button 
               className="btn btn-action btn-secondary" 
               onClick={onOfferDraw} 
@@ -49,6 +54,28 @@ export const GameActions = ({
             >
               🤝 Nulle
             </button>
+          )}
+
+          {drawOfferReceived && (
+            <div className="draw-offer-actions" style={{ display: 'flex', gap: '6px' }}>
+              <span style={{ fontSize: '0.8rem', alignSelf: 'center', color: '#ffd600' }}>
+                ⚡ Nulle proposée !
+              </span>
+              <button 
+                className="btn btn-action" 
+                onClick={onAcceptDraw}
+                style={{ backgroundColor: '#28a745' }}
+              >
+                ✅ Accepter
+              </button>
+              <button 
+                className="btn btn-action" 
+                onClick={onDeclineDraw}
+                style={{ backgroundColor: '#dc3545' }}
+              >
+                ❌ Refuser
+              </button>
+            </div>
           )}
         </>
       )}

@@ -9,7 +9,9 @@ export const ChessBoardComponent = ({
   onSquareClick,
   onSquareRightClick,
   customSquareStyles,
-  isDraggablePiece
+  isDraggablePiece,
+  onPromotionPieceSelect,
+  onPromotionCheck
 }) => {
   return (
     <div className="board-container">
@@ -22,10 +24,13 @@ export const ChessBoardComponent = ({
         boardOrientation={boardOrientation}
         customSquareStyles={customSquareStyles}
         animationDuration={200}
-        customDarkSquareStyle={{ backgroundColor: '#2b5278' }} // Telegram Blue Theme (Dark)
-        customLightSquareStyle={{ backgroundColor: '#6490b1' }} // Telegram Blue Theme (Light)
+        customDarkSquareStyle={{ backgroundColor: '#2b5278' }}
+        customLightSquareStyle={{ backgroundColor: '#6490b1' }}
         isDraggablePiece={isDraggablePiece}
-        autoPromoteToQueen={/* Feature needed auto promote to queen */ true}
+        autoPromoteToQueen={false}
+        onPromotionPieceSelect={onPromotionPieceSelect}
+        onPromotionCheck={onPromotionCheck}
+        promotionDialogVariant="default"
       />
     </div>
   );
